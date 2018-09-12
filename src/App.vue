@@ -31,7 +31,7 @@ export default {
               {name: 'Kami', speciality: 'Webpack', show: false},
               {name: 'Yoshi', speciality: 'Data Diggin', show: false}
           ],
-          title: 'Vue Wizards'
+          title: 'Vue'
         }
     },
     methods: {

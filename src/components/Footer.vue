@@ -4,6 +4,7 @@
     </footer>
 </template>
 <script>
+import { bus } from '../main.js';
 export default {
     props: {
       title: {
@@ -13,9 +14,14 @@ export default {
     },
     data(){
         return{
-
+            copyright: 'Copyright 2017',
         }
-    }
+    },
+    created() {
+      bus.$on('titleChange', data => {
+        this.title = data;
+      });  
+    },
 }
 </script>
 <style scoped>
