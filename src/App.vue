@@ -1,44 +1,38 @@
 <template>
     <div>
-        <form-helper>
-            <div slot="form-header">
-                <h3>Form Header</h3>
-                <p>Info about the form</p>
-            </div>
-            <div slot="form-fields">
-                <input type="text" placeholder="name" required>
-                <input type="password" placeholder="password" required>                
-            </div>
-            <div slot="form-controls">
-                <button v-on:click="handleSubmit">Submit</button>
-            </div>
-        </form-helper>
+      <keep-alive>
+        <component v-bind:is="showComponent"></component>
+      </keep-alive>
+      <button v-on:click="showComponent='formOne'">Form One</button>
+      <button v-on:click="showComponent='formTwo'">Form Two</button>
     </div>
 </template>
 
 <script>
 // Imports
-import FormHelper from './components/FormHelper.vue';
+import formOne from "./components/formOne.vue";
+import formTwo from "./components/formTwo.vue";
 export default {
-    components: {
-        FormHelper,
-    },
-    data () {
-        return {
-            title: 'I am a slot title'
-        }
-    },
-    methods: {
-        handleSubmit() {
-            console.warn("handleSubmit");
-        }
+  components: {
+    formOne,
+    formTwo,
+  },
+  data() {
+    return {
+      showComponent: 'formTwo'
+    };
+  },
+  methods: {
+    handleSubmit() {
+      console.warn("handleSubmit");
     }
-}
+  }
+};
 </script>
 
 <style>
-body{
-    margin: 0;
-    font-family: 'Nunito SemiBold';
+body {
+  margin: 0;
+  font-family: "Nunito SemiBold";
 }
 </style>
