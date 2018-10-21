@@ -22,13 +22,13 @@
       </select>
     </form>
     <div id="preview">
-      <h3>Preview Blog</h3>
+      <h3 v-rainbow>Preview Blog</h3>
       <p>Blog Title: {{ blog.title }} </p>
       <p>Blog content:</p>
       <p>{{ blog.textArea }}</p>
       <p>Blog categories:</p>
       <ul>
-        <li v-for="category in blog.categories">
+        <li v-transformCase:largeText="'capitalize'" v-for="category in blog.categories">
           {{ category }}
         </li>
       </ul>
