@@ -1,25 +1,32 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-export const bus = new Vue();
-
-// custom directives
+// Custom directives
 Vue.directive('rainbow', {
   bind(el, binding, vnode) {
-    el.style.color = `#${Math.random().toString().slice(2,8)}`
+    el.style.color = "#" + Math.random().toString(16).slice(2, 8);
   }
 });
 
-Vue.directive('transformCase', {
+// Filters
+Vue.filter('to-uppercase', function (value) {
+  return value.toUpperCase();
+});
+
+Vue.filter('snippit', function (value) {
+  return `${value.slice(0, 100)}...`;
+});
+
+Vue.directive('theme', {
   bind(el, binding, vnode) {
-    if (binding.value === 'uppercase') {
-      el.style.textTransform = 'uppercase';
+    if (binding.value == 'wide') {
+      el.style.maxWidth = "1260px";
+    } else if (binding.value = 'narrow') {
+      el.style.maxWidth = "560px";
     }
-    if (binding.value === 'capitalize') {
-      el.style.textTransform = 'capitalize';
-    }
-    if (binding.arg === 'largeText') {
-      el.style.fontSize = '2em';
+    if (binding.arg == 'column') {
+      el.style.background = '#ddd';
+      el.style.padding = '20px';
     }
   }
 });
