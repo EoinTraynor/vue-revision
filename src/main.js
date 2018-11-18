@@ -1,5 +1,12 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router';
 import App from './App.vue'
+import routes from './routes/index';
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes,
+});
 
 Vue.filter('snippit', function (value) {
   return `${value.slice(0, 100)}...`;
@@ -21,5 +28,6 @@ Vue.directive('theme', {
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router: router
 })
