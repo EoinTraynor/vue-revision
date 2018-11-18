@@ -6,6 +6,7 @@ import routes from './routes/index';
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
+  mode: 'history',
 });
 
 Vue.filter('snippit', function (value) {
