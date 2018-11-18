@@ -30,6 +30,16 @@ export default {
     axios.get("http://jsonplaceholder.typicode.com/posts").then(data => {
       this.blogs = data.data.slice(0, 10);
     });
+  },
+  filters: {
+    toUppercase: value => value.toUpperCase(),
+  },
+  directives: {
+    'rainbow': {
+      bind(el, binding, vnode) {
+        el.style.color = "#" + Math.random().toString(16).slice(2, 8);
+      }
+    }
   }
 };
 </script>
